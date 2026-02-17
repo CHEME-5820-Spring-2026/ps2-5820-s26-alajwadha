@@ -8,9 +8,11 @@ const _DID_INCLUDE_FILE_GET_CALLED = true;
 
 # if we are missing any packages, install them -
 using Pkg;
+Pkg.activate(".");
 if (isfile(joinpath(_ROOT, "Manifest.toml")) == false) # have manifest file, we are good. Otherwise, we need to instantiate the environment
     Pkg.add(path="https://github.com/varnerlab/VLDataScienceMachineLearningPackage.jl.git")
-    Pkg.activate("."); Pkg.resolve(); Pkg.instantiate(); Pkg.update();
+    Pkg.resolve(); 
+    Pkg.instantiate();
 end
 
 # load external packages -
@@ -30,7 +32,6 @@ using Random
 using Distributions
 using PrettyTables
 using JuMP
-using MadNLP
 using MathOptInterface
 using ColorVectorSpace
 using CSV
